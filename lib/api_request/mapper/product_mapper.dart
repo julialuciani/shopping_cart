@@ -1,8 +1,8 @@
 import 'package:shopping_cart/api_request/models/product_viewdata.dart';
 
-import '../response/products/products_response.dart';
+import '../response/products/get_all_products_response.dart';
 
-extension ProductMapper on ProductsResponse {
+extension ProductMapper on GetAllProductsResponse {
   List<ProductViewData> toViewData() {
     return products
         .map((product) => ProductViewData(
