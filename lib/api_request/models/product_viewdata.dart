@@ -1,12 +1,10 @@
-import 'package:decimal/decimal.dart';
-
 class ProductViewData {
   int id;
   String title;
   String description;
-  Decimal price;
-  Decimal discountPercentage;
-  Decimal rating;
+  double price;
+  double discountPercentage;
+  double rating;
   int stock;
   String brand;
   String category;
