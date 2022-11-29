@@ -1,16 +1,102 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SliderPhotos extends StatelessWidget {
+class SliderPhotos extends StatefulWidget {
   const SliderPhotos({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<SliderPhotos> createState() => _SliderPhotosState();
+}
+
+class _SliderPhotosState extends State<SliderPhotos> {
+  int? sliding = 0;
+  @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 200,
-      width: double.infinity,
-      color: Colors.blue,
+      child: PageView.builder(
+        allowImplicitScrolling: true,
+        onPageChanged: (value) {
+          sliding = value;
+          setState(() {});
+        },
+        itemCount: images.length,
+        itemBuilder: (context, index) {
+          return Stack(children: [
+            SizedBox(
+              width: double.maxFinite,
+              child: Image.asset(
+                images[sliding!],
+                fit: BoxFit.cover,
+              ),
+            ),
+            Positioned(
+              bottom: 20,
+              right: 120,
+              child: CupertinoSlidingSegmentedControl(
+                children: {
+                  0: CircleAvatar(
+                    radius: changeColorIfSelected(sliding!, 0) ? 5 : 3,
+                    backgroundColor: changeColorIfSelected(sliding!, 0)
+                        ? Colors.amber
+                        : Colors.white,
+                  ),
+                  1: CircleAvatar(
+                    radius: changeColorIfSelected(sliding!, 1) ? 5 : 3,
+                    backgroundColor: changeColorIfSelected(sliding!, 1)
+                        ? Colors.amber
+                        : Colors.white,
+                  ),
+                  2: CircleAvatar(
+                    radius: changeColorIfSelected(sliding!, 2) ? 5 : 3,
+                    backgroundColor: changeColorIfSelected(sliding!, 2)
+                        ? Colors.amber
+                        : Colors.white,
+                  ),
+                  3: CircleAvatar(
+                    radius: changeColorIfSelected(sliding!, 3) ? 5 : 3,
+                    backgroundColor: changeColorIfSelected(sliding!, 3)
+                        ? Colors.amber
+                        : Colors.white,
+                  ),
+                  4: CircleAvatar(
+                    radius: changeColorIfSelected(sliding!, 4) ? 5 : 3,
+                    backgroundColor: changeColorIfSelected(sliding!, 4)
+                        ? Colors.amber
+                        : Colors.white,
+                  ),
+                },
+                backgroundColor: Colors.white.withOpacity(0),
+                thumbColor: Colors.white.withOpacity(0),
+                groupValue: sliding,
+                onValueChanged: (index) {
+                  setState(() {
+                    sliding = index;
+                  });
+                },
+              ),
+            ),
+          ]);
+        },
+      ),
     );
   }
 }
+
+bool changeColorIfSelected(int sliding, int newValue) {
+  if (sliding == newValue) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+List<String> images = [
+  "assets/images/thumb-magalu.png",
+  "assets/images/sigaalunasredessociaismagazineluizamagalu.png",
+  "assets/images/Magalu_SmartphonizaBrasil_575.jpg",
+  "assets/images/regulamentos.png",
+  "assets/images/KV_02_rio.jpeg",
+];

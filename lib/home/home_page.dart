@@ -14,6 +14,7 @@ class HomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final getProductsProvider = ref.watch(productsProvider);
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: getProductsProvider.when(
           data: (data) {

@@ -18,8 +18,15 @@ class RowTextFormFieldAndIcons extends StatelessWidget {
               ),
             ),
           ),
-          const Icon(Icons.shopping_basket),
-          const Icon(Icons.chat),
+          const Icon(
+            Icons.shopping_basket,
+            color: Colors.blue,
+          ),
+          const SizedBox(width: 5),
+          const Icon(
+            Icons.chat,
+            color: Colors.blue,
+          ),
         ],
       ),
     );
