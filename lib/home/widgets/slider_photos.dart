@@ -17,7 +17,6 @@ class _SliderPhotosState extends State<SliderPhotos> {
     return SizedBox(
       height: 200,
       child: PageView.builder(
-        allowImplicitScrolling: true,
         onPageChanged: (value) {
           sliding = value;
           setState(() {});
