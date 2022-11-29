@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../api_request/models/product_viewdata.dart';
 import '../home_page.dart';
@@ -10,7 +9,7 @@ class ListViewIcons extends StatelessWidget {
     required this.getProductsProvider,
   }) : super(key: key);
 
-  final AsyncValue<List<ProductViewData>> getProductsProvider;
+  final List<ProductViewData> getProductsProvider;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +17,7 @@ class ListViewIcons extends StatelessWidget {
       child: ListView.builder(
         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
         scrollDirection: Axis.horizontal,
-        itemCount: addCategory(getProductsProvider.asData!.value).length,
+        itemCount: addCategory(getProductsProvider).length,
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
@@ -31,11 +30,10 @@ class ListViewIcons extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(width: 1, color: Colors.black12),
                   ),
-                  child: selectIcon(
-                      addCategory(getProductsProvider.asData!.value)[index]),
+                  child: selectIcon(addCategory(getProductsProvider)[index]),
                 ),
                 const SizedBox(height: 10),
-                Text(addCategory(getProductsProvider.asData!.value)[index]),
+                Text(addCategory(getProductsProvider)[index]),
               ],
             ),
           );
