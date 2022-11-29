@@ -52,22 +52,19 @@ class ListViewProducts extends StatelessWidget {
                     const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    InkWell(
-                      child: Container(
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade400,
-                          borderRadius: BorderRadius.circular(24),
-                        ),
-                        child: Row(
-                          children: const [
-                            Text("Detalhes"),
-                            Icon(Icons.arrow_right)
-                          ],
+                  children: const [
+                    Chip(
+                      side: BorderSide(width: 2, color: Colors.blue),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                      backgroundColor: Colors.white,
+                      label: Text(
+                        "Detalhes",
+                        style: TextStyle(
+                          color: Colors.blue,
                         ),
                       ),
-                    ),
+                    )
                   ],
                 ),
               )

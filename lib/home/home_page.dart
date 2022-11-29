@@ -71,6 +71,5 @@ Icon selectIcon(String category) {
     case "home-decoration":
       icon = const Icon(Icons.home);
   }
-
   return icon;
 }
