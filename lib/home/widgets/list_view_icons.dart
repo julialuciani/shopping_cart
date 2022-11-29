@@ -6,10 +6,10 @@ import '../home_page.dart';
 class ListViewIcons extends StatelessWidget {
   const ListViewIcons({
     Key? key,
-    required this.getProductsProvider,
+    required this.data,
   }) : super(key: key);
 
-  final List<ProductViewData> getProductsProvider;
+  final List<ProductViewData> data;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class ListViewIcons extends StatelessWidget {
       child: ListView.builder(
         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
         scrollDirection: Axis.horizontal,
-        itemCount: addCategory(getProductsProvider).length,
+        itemCount: addCategory(data).length,
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
@@ -30,10 +30,10 @@ class ListViewIcons extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(width: 1, color: Colors.black12),
                   ),
-                  child: selectIcon(addCategory(getProductsProvider)[index]),
+                  child: selectIcon(addCategory(data)[index]),
                 ),
                 const SizedBox(height: 10),
-                Text(addCategory(getProductsProvider)[index]),
+                Text(addCategory(data)[index]),
               ],
             ),
           );
