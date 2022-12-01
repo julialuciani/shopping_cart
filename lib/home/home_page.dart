@@ -22,8 +22,8 @@ class HomePage extends ConsumerWidget {
               children: [
                 const RowTextFormFieldAndIcons(),
                 const SliderPhotos(),
-                ListViewIcons(data: getProductsProvider.asData!.value),
-                ListViewProducts(data: getProductsProvider.asData!.value)
+                ListViewIcons(data: data),
+                ListViewProducts(data: data)
               ],
             );
           },

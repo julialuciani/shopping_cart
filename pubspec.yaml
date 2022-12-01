@@ -42,6 +42,8 @@ dependencies:
   hooks_riverpod: ^2.1.1
   mocktail: ^0.3.0
   faker: ^2.0.0
+  network: ^1.0.0-nullsafety.0
+  network_image_mock: ^2.1.1
  
 
 dev_dependencies:
