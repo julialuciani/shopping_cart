@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_cart/details_page/details_page.dart';
 import 'package:shopping_cart/home/home_page.dart';
 
 class GenerateRoute {
@@ -7,6 +8,12 @@ class GenerateRoute {
       return PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) {
           return const HomePage();
+        },
+      );
+    } else if (settings.name == DetailsPage.route) {
+      return PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) {
+          return const DetailsPage();
         },
       );
     }

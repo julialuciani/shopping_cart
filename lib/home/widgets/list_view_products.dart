@@ -51,7 +51,9 @@ class ListViewProducts extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, "details-page");
+                      },
                       child: const Chip(
                         side: BorderSide(width: 2, color: Colors.blue),
                         padding:
