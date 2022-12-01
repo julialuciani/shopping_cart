@@ -8,6 +8,7 @@ import 'package:shopping_cart/home/widgets/row_text_form_field_and_icons.dart';
 import 'package:shopping_cart/home/widgets/slider_photos.dart';
 
 class HomePage extends ConsumerWidget {
+  static const route = "/";
   const HomePage({Key? key}) : super(key: key);
 
   @override
