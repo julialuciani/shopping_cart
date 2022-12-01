@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class SliderPhotos extends StatefulWidget {
   const SliderPhotos({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<SliderPhotos> createState() => _SliderPhotosState();

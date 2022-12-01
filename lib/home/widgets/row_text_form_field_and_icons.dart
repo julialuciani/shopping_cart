@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class RowTextFormFieldAndIcons extends StatelessWidget {
   const RowTextFormFieldAndIcons({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

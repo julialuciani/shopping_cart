@@ -13,7 +13,8 @@ class ListViewIcons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return SizedBox(
+      height: 140,
       child: ListView.builder(
         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
         scrollDirection: Axis.horizontal,
