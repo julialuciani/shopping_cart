@@ -12,8 +12,7 @@ class ListViewProducts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 380,
+    return Expanded(
       child: ListView.builder(
         itemCount: data.length,
         itemBuilder: (context, index) {
