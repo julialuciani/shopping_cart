@@ -52,7 +52,8 @@ class ListViewProducts extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: () {
-                        Navigator.pushNamed(context, "details-page");
+                        Navigator.pushNamed(context, "details-page",
+                            arguments: data[index]);
                       },
                       child: const Chip(
                         side: BorderSide(width: 2, color: Colors.blue),

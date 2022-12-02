@@ -22,7 +22,9 @@ class HomePage extends ConsumerWidget {
             return Column(
               children: [
                 const RowTextFormFieldAndIcons(),
-                const SliderPhotos(),
+                SliderPhotos(
+                  images: images,
+                ),
                 ListViewIcons(data: data),
                 ListViewProducts(data: data)
               ],
@@ -74,3 +76,11 @@ Icon selectIcon(String category) {
   }
   return icon;
 }
+
+List<String> images = [
+  "assets/images/thumb-magalu.png",
+  "assets/images/sigaalunasredessociaismagazineluizamagalu.png",
+  "assets/images/Magalu_SmartphonizaBrasil_575.jpg",
+  "assets/images/regulamentos.png",
+  "assets/images/KV_02_rio.jpeg",
+];
