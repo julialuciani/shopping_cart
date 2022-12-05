@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SliderPhotos extends StatefulWidget {
+  final List<String> images;
   const SliderPhotos({
-    super.key,
-  });
+    Key? key,
+    required this.images,
+  }) : super(key: key);
 
   @override
   State<SliderPhotos> createState() => _SliderPhotosState();
@@ -21,15 +23,12 @@ class _SliderPhotosState extends State<SliderPhotos> {
           sliding = value;
           setState(() {});
         },
-        itemCount: images.length,
+        itemCount: widget.images.length,
         itemBuilder: (context, index) {
           return Stack(children: [
             SizedBox(
               width: double.maxFinite,
-              child: Image.asset(
-                images[sliding!],
-                fit: BoxFit.cover,
-              ),
+              child: showImage(widget.images[sliding!]),
             ),
             Positioned(
               bottom: 20,
@@ -92,10 +91,17 @@ bool changeColorIfSelected(int sliding, int newValue) {
   }
 }
 
-List<String> images = [
-  "assets/images/thumb-magalu.png",
-  "assets/images/sigaalunasredessociaismagazineluizamagalu.png",
-  "assets/images/Magalu_SmartphonizaBrasil_575.jpg",
-  "assets/images/regulamentos.png",
-  "assets/images/KV_02_rio.jpeg",
-];
+Widget showImage(String image) {
+  final uri = Uri.parse(image);
+  if (uri.toString().contains('http')) {
+    return Image.network(
+      uri.toString(),
+      fit: BoxFit.cover,
+    );
+  } else {
+    return Image.asset(
+      uri.toString(),
+      fit: BoxFit.cover,
+    );
+  }
+}

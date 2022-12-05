@@ -38,7 +38,17 @@ void main() {
 
   testWidgets("WHEN calls SliderPhotos THEN test if it works",
       (WidgetTester tester) async {
-    await loadPage(tester, const SliderPhotos());
+    await loadPage(
+        tester,
+        SliderPhotos(
+          images: const [
+            "assets/images/thumb-magalu.png",
+            "assets/images/sigaalunasredessociaismagazineluizamagalu.png",
+            "assets/images/Magalu_SmartphonizaBrasil_575.jpg",
+            "assets/images/regulamentos.png",
+            "assets/images/KV_02_rio.jpeg",
+          ],
+        ));
 
     await tester.drag(find.byType(Image).first, const Offset(200, 0));
     await tester.pumpAndSettle();
