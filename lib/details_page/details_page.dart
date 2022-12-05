@@ -24,12 +24,14 @@ class _DetailsPageState extends ConsumerState<DetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarDetails(ref: ref),
+      appBar: const AppBarDetails(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CarouselSliderDetails(product: widget.product),
+            CarouselSliderDetails(
+              images: widget.product.images,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: Column(
@@ -82,7 +84,7 @@ class _DetailsPageState extends ConsumerState<DetailsPage> {
                       ),
                     ),
                   ),
-                  ShoppingCartInkWell(ref: ref)
+                  const ShoppingCartInkWell()
                 ],
               ),
             ),
@@ -102,12 +104,4 @@ double getTotalPriceMinusDiscount(double price, double discount) {
 String formatCurrency(double value) {
   return NumberFormat.simpleCurrency(locale: "pt-BR", decimalDigits: 2)
       .format(value);
-}
-
-int isStarHalf(double rating) {
-  if (rating.toInt() - rating != 0) {
-    return rating.toInt() + 1;
-  } else {
-    return 0;
-  }
 }

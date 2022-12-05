@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_cart/details_page/details_page.dart';
 
 class RatingStars extends StatelessWidget {
   final double rating;
@@ -68,5 +67,13 @@ class RatingStars extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+int isStarHalf(double rating) {
+  if (rating.toInt() - rating != 0) {
+    return rating.toInt() + 1;
+  } else {
+    return 0;
   }
 }

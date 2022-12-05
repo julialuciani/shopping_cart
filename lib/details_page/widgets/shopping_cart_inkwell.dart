@@ -2,16 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shopping_cart/details_page/providers.dart';
 
-class ShoppingCartInkWell extends StatelessWidget {
+class ShoppingCartInkWell extends ConsumerWidget {
   const ShoppingCartInkWell({
     Key? key,
-    required this.ref,
   }) : super(key: key);
 
-  final WidgetRef ref;
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return InkWell(
       splashFactory: NoSplash.splashFactory,
       onTap: () {
