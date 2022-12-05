@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SliderPhotos extends StatefulWidget {
-  List<String> images;
-  SliderPhotos({
+  final List<String> images;
+  const SliderPhotos({
     Key? key,
     required this.images,
   }) : super(key: key);
@@ -28,11 +28,7 @@ class _SliderPhotosState extends State<SliderPhotos> {
           return Stack(children: [
             SizedBox(
               width: double.maxFinite,
-              child: _showImage(widget.images[sliding!]),
-              // child: Image.asset(
-              //   widget.images[sliding!],
-              //   fit: BoxFit.cover,
-              // ),
+              child: showImage(widget.images[sliding!]),
             ),
             Positioned(
               bottom: 20,
@@ -95,7 +91,7 @@ bool changeColorIfSelected(int sliding, int newValue) {
   }
 }
 
-Widget _showImage(String image) {
+Widget showImage(String image) {
   final uri = Uri.parse(image);
   if (uri.toString().contains('http')) {
     return Image.network(
