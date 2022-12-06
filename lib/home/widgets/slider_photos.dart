@@ -28,7 +28,7 @@ class _SliderPhotosState extends State<SliderPhotos> {
           return Stack(children: [
             SizedBox(
               width: double.maxFinite,
-              child: showImage(widget.images[sliding!]),
+              child: Image.asset(widget.images[sliding!]),
             ),
             Positioned(
               bottom: 20,
@@ -88,20 +88,5 @@ bool changeColorIfSelected(int sliding, int newValue) {
     return true;
   } else {
     return false;
-  }
-}
-
-Widget showImage(String image) {
-  final uri = Uri.parse(image);
-  if (uri.toString().contains('http')) {
-    return Image.network(
-      uri.toString(),
-      fit: BoxFit.cover,
-    );
-  } else {
-    return Image.asset(
-      uri.toString(),
-      fit: BoxFit.cover,
-    );
   }
 }
