@@ -40,8 +40,8 @@ void main() {
       (WidgetTester tester) async {
     await loadPage(
         tester,
-        SliderPhotos(
-          images: const [
+        const SliderPhotos(
+          images: [
             "assets/images/thumb-magalu.png",
             "assets/images/sigaalunasredessociaismagazineluizamagalu.png",
             "assets/images/Magalu_SmartphonizaBrasil_575.jpg",

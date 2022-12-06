@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:shopping_cart/generate_routes.dart';
 
 class SetupWidgetTester extends StatelessWidget {
   final Widget child;
@@ -10,6 +11,7 @@ class SetupWidgetTester extends StatelessWidget {
   Widget build(BuildContext context) {
     return ProviderScope(
         child: MaterialApp(
+      onGenerateRoute: GenerateRoute.findRoute,
       home: Material(
         child: MediaQuery(
           data: const MediaQueryData(),

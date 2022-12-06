@@ -4,8 +4,8 @@ import 'package:shopping_cart/details_page/providers.dart';
 
 class AppBarDetails extends ConsumerWidget implements PreferredSizeWidget {
   const AppBarDetails({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Size get preferredSize => const Size(double.maxFinite, 56);

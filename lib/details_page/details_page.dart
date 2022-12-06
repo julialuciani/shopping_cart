@@ -33,7 +33,7 @@ class _DetailsPageState extends ConsumerState<DetailsPage> {
               images: widget.product.images,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
                   ListTile(

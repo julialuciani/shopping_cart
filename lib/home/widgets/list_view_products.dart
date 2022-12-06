@@ -12,7 +12,8 @@ class ListViewProducts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return SizedBox(
+      height: 100,
       child: ListView.builder(
         itemCount: data.length,
         itemBuilder: (context, index) {
@@ -45,8 +46,7 @@ class ListViewProducts extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                padding: const EdgeInsets.all(10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -57,8 +57,7 @@ class ListViewProducts extends StatelessWidget {
                       },
                       child: const Chip(
                         side: BorderSide(width: 2, color: Colors.blue),
-                        padding:
-                            EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                        padding: EdgeInsets.all(10),
                         backgroundColor: Colors.white,
                         label: Text(
                           "Detalhes",
