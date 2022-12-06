@@ -46,8 +46,7 @@ class ListViewProducts extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                padding: const EdgeInsets.all(10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -58,8 +57,7 @@ class ListViewProducts extends StatelessWidget {
                       },
                       child: const Chip(
                         side: BorderSide(width: 2, color: Colors.blue),
-                        padding:
-                            EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                        padding: EdgeInsets.all(10),
                         backgroundColor: Colors.white,
                         label: Text(
                           "Detalhes",

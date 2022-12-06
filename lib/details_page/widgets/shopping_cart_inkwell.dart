@@ -15,7 +15,7 @@ class ShoppingCartInkWell extends ConsumerWidget {
       child: Chip(
         side: const BorderSide(width: 2, color: Colors.blue),
         backgroundColor: Colors.white,
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+        padding: const EdgeInsets.all(10),
         label: Row(
           mainAxisSize: MainAxisSize.min,
           children: const [
