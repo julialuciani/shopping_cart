@@ -11,6 +11,7 @@ class FakeRepository {
 }
 
 ProductViewData first = ProductViewData(
+    quantity: 0,
     id: 0,
     title: 'title',
     description: 'description',
@@ -23,6 +24,7 @@ ProductViewData first = ProductViewData(
     thumbnail: 'thumbnail',
     images: ["https://i.dummyjson.com/data/products/4/1.jpg"]);
 ProductViewData second = ProductViewData(
+    quantity: 0,
     id: 0,
     title: 'title',
     description: 'description',

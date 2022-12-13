@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopping_cart/details_page/providers.dart';
 
-class AppBarDetails extends ConsumerWidget implements PreferredSizeWidget {
+class AppBarDetails extends ConsumerStatefulWidget
+    implements PreferredSizeWidget {
   const AppBarDetails({
     super.key,
   });
@@ -11,7 +12,14 @@ class AppBarDetails extends ConsumerWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size(double.maxFinite, 56);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<AppBarDetails> createState() => _StateAppBarDetails();
+}
+
+class _StateAppBarDetails extends ConsumerState<AppBarDetails> {
+  @override
+  Widget build(BuildContext context) {
+    final cartList = ref.watch(cartProvider);
+
     return AppBar(
       elevation: 20,
       iconTheme: const IconThemeData(color: Colors.blue),
@@ -25,14 +33,18 @@ class AppBarDetails extends ConsumerWidget implements PreferredSizeWidget {
           ),
           Stack(
             children: [
-              const Icon(Icons.shopping_cart, color: Colors.blue),
+              IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pushNamed("cart-page");
+                  },
+                  icon: const Icon(Icons.shopping_cart, color: Colors.blue)),
               Positioned(
                 right: 1,
                 child: CircleAvatar(
                   radius: 6,
                   backgroundColor: Colors.red,
                   child: Text(
-                    ref.watch(cartProvider).toString(),
+                    cartList.length.toString(),
                     style: const TextStyle(
                       fontSize: 8,
                     ),

@@ -47,5 +47,6 @@ ProductViewData product = ProductViewData(
   brand: 'brand',
   category: 'category',
   thumbnail: 'thumbnail',
+  quantity: 0,
   images: ["https://i.dummyjson.com/data/products/1/1.jpg"],
 );
