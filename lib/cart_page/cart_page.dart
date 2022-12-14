@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shopping_cart/api_request/models/product_viewdata.dart';
+import 'package:shopping_cart/cart_page/widgets/list_view_cart_products.dart';
+import 'package:shopping_cart/cart_page/widgets/row_total.dart';
+import 'package:shopping_cart/cart_page/widgets/to_buy_inkwell.dart';
 import 'package:shopping_cart/details_page/providers.dart';
 
 class CartPage extends ConsumerStatefulWidget {
@@ -30,73 +32,19 @@ class _CartPageState extends ConsumerState<CartPage> {
       body: Column(
         children: [
           Expanded(
-            child: ListView.separated(
-              physics: const BouncingScrollPhysics(),
-              separatorBuilder: (context, index) => const Divider(),
-              itemCount: cartProducts.length,
-              itemBuilder: (context, index) {
-                ProductViewData cartProduct = cartProducts[index];
-                return ListTile(
-                  title: Text(cartProduct.title),
-                  subtitle: Text(cartProduct.brand),
-                  trailing: Column(
-                    children: [
-                      SizedBox(
-                        height: 30,
-                        child: Image.network(cartProduct.thumbnail),
-                      ),
-                      const SizedBox(height: 10),
-                      Text('${cartProduct.price} x ${cartProduct.quantity}'),
-                    ],
-                  ),
-                );
-              },
-            ),
+            child: ListViewCartProducts(cartProducts: cartProducts),
           ),
-          const Divider(
-            thickness: 1,
-          ),
+          const Divider(thickness: 1),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text("Total: "),
-                    Text(calculateTotal(cartProducts).toString()),
-                  ],
-                ),
-              ],
-            ),
+            child: RowTotal(ref: ref),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            child: InkWell(
-              borderRadius: BorderRadius.circular(25),
-              splashFactory: NoSplash.splashFactory,
-              onTap: () {},
-              child: const Chip(
-                labelPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                backgroundColor: Colors.white,
-                side: BorderSide(width: 1, color: Colors.blue),
-                label: Text(
-                  "Comprar",
-                  style: TextStyle(color: Colors.blue),
-                ),
-              ),
-            ),
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 20),
+            child: ToBuyInkWell(),
           )
         ],
       ),
     );
   }
-}
-
-double calculateTotal(List<ProductViewData> products) {
-  double total = 0;
-  for (ProductViewData product in products) {
-    total += product.price;
-  }
-  return total;
 }
