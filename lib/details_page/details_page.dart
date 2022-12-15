@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import 'package:shopping_cart/api_request/models/product_viewdata.dart';
-import 'package:shopping_cart/details_page/providers.dart';
 import 'package:shopping_cart/details_page/widgets/app_bar_details.dart';
 import 'package:shopping_cart/details_page/widgets/carousel_slider_details.dart';
 import 'package:shopping_cart/details_page/widgets/rating_stars.dart';
@@ -25,7 +24,7 @@ class _DetailsPageState extends ConsumerState<DetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarDetails(),
+      appBar: AppBarDetails(ref: ref),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,7 +32,6 @@ class _DetailsPageState extends ConsumerState<DetailsPage> {
             CarouselSliderDetails(
               images: widget.product.images,
             ),
-            Text(ref.watch(cartProvider).length.toString()),
             Padding(
               padding: const EdgeInsets.all(20),
               child: Column(

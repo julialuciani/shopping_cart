@@ -1,25 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:shopping_cart/details_page/providers.dart';
 
-class AppBarDetails extends ConsumerStatefulWidget
-    implements PreferredSizeWidget {
+class AppBarDetails extends StatelessWidget implements PreferredSizeWidget {
   const AppBarDetails({
-    super.key,
-  });
+    Key? key,
+    required this.ref,
+  }) : super(key: key);
+
+  final WidgetRef ref;
 
   @override
   Size get preferredSize => const Size(double.maxFinite, 56);
 
   @override
-  ConsumerState<AppBarDetails> createState() => _StateAppBarDetails();
-}
-
-class _StateAppBarDetails extends ConsumerState<AppBarDetails> {
-  @override
   Widget build(BuildContext context) {
-    final cartList = ref.watch(cartProvider);
-
     return AppBar(
       elevation: 20,
       iconTheme: const IconThemeData(color: Colors.blue),
@@ -44,7 +40,7 @@ class _StateAppBarDetails extends ConsumerState<AppBarDetails> {
                   radius: 6,
                   backgroundColor: Colors.red,
                   child: Text(
-                    cartList.length.toString(),
+                    ref.watch(numberOfProducts).toString(),
                     style: const TextStyle(
                       fontSize: 8,
                     ),

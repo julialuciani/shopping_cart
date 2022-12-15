@@ -24,6 +24,8 @@ class _ShoppingCartInkWellState extends ConsumerState<ShoppingCartInkWell> {
       onTap: () {
         ref.read(cartProvider.notifier).state =
             addQuantityToProduct(widget.product, cartProducts);
+
+        ref.read(numberOfProducts.notifier).state++;
       },
       child: Chip(
         side: const BorderSide(width: 2, color: Colors.blue),

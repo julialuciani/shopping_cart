@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopping_cart/cart_page/providers.dart';
 
+import '../../details_page/details_page.dart';
+
 class RowTotal extends StatelessWidget {
   const RowTotal({
     Key? key,
@@ -16,7 +18,7 @@ class RowTotal extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         const Text("Total: "),
-        Text(ref.watch(totalProvider).toString()),
+        Text(formatCurrency(ref.watch(totalProvider))),
       ],
     );
   }
