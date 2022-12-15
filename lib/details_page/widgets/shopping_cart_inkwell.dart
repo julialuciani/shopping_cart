@@ -23,7 +23,7 @@ class _ShoppingCartInkWellState extends ConsumerState<ShoppingCartInkWell> {
       splashFactory: NoSplash.splashFactory,
       onTap: () {
         ref.read(cartProvider.notifier).state =
-            addQuantityToProduct(widget.product, cartProducts);
+            _addQuantityToProduct(widget.product, cartProducts);
 
         ref.read(numberOfProducts.notifier).state++;
       },
@@ -49,13 +49,13 @@ class _ShoppingCartInkWellState extends ConsumerState<ShoppingCartInkWell> {
   }
 }
 
-List<ProductViewData> addQuantityToProduct(
-    ProductViewData product, List<ProductViewData> products) {
-  if (!products.contains(product)) {
+List<ProductViewData> _addQuantityToProduct(
+    ProductViewData product, List<ProductViewData> productsInCart) {
+  if (!productsInCart.contains(product)) {
     product.quantity = 1;
-    products.add(product);
+    productsInCart.add(product);
   } else {
     product.quantity++;
   }
-  return products;
+  return productsInCart;
 }
