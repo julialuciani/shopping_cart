@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:shopping_cart/api_request/models/product_viewdata.dart';
+import 'package:shopping_cart/cart_page/cart_controller.dart';
 import 'package:shopping_cart/cart_page/providers.dart';
 
 class AddOrRemoveContainer extends ConsumerStatefulWidget {
@@ -34,9 +35,9 @@ class _AddOrRemoveContainerState extends ConsumerState<AddOrRemoveContainer> {
         children: [
           InkWell(
               onTap: () {
-                addQuantity(widget.product);
+                CartController.addQuantity(widget.product);
                 ref.read(totalProvider.notifier).state =
-                    calculateTotal(widget.products);
+                    CartController.calculateTotal(widget.products);
                 setState(() {});
               },
               child: const Icon(Icons.add, size: 20, color: Colors.blue)),
@@ -46,9 +47,9 @@ class _AddOrRemoveContainerState extends ConsumerState<AddOrRemoveContainer> {
           ),
           InkWell(
               onTap: () {
-                subtractQuantity(widget.product);
+                CartController.subtractQuantity(widget.product);
                 ref.read(totalProvider.notifier).state =
-                    calculateTotal(widget.products);
+                    CartController.calculateTotal(widget.products);
                 setState(() {});
               },
               child: const Icon(Icons.remove, size: 20, color: Colors.blue)),
@@ -56,20 +57,4 @@ class _AddOrRemoveContainerState extends ConsumerState<AddOrRemoveContainer> {
       ),
     );
   }
-}
-
-void addQuantity(ProductViewData product) {
-  product.quantity++;
-}
-
-void subtractQuantity(ProductViewData product) {
-  product.quantity--;
-}
-
-double calculateTotal(List<ProductViewData> products) {
-  double total = 0;
-  for (ProductViewData product in products) {
-    total += product.price * product.quantity;
-  }
-  return total;
 }

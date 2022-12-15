@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shopping_cart/cart_page/cart_controller.dart';
 import 'package:shopping_cart/cart_page/providers.dart';
-import 'package:shopping_cart/cart_page/widgets/add_or_remove_container.dart';
 import 'package:shopping_cart/cart_page/widgets/list_view_cart_products.dart';
 import 'package:shopping_cart/cart_page/widgets/row_total.dart';
 import 'package:shopping_cart/cart_page/widgets/to_buy_inkwell.dart';
@@ -21,7 +21,7 @@ class _CartPageState extends ConsumerState<CartPage> {
   void initState() {
     Future.delayed(Duration.zero, () {
       ref.read(totalProvider.notifier).state =
-          calculateTotal(ref.watch(cartProvider));
+          CartController.calculateTotal(ref.watch(cartProvider));
     });
     super.initState();
   }
@@ -46,9 +46,9 @@ class _CartPageState extends ConsumerState<CartPage> {
             child: ListViewCartProducts(cartProducts: cartProducts),
           ),
           const Divider(thickness: 1),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-            child: RowTotal(ref: ref),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            child: RowTotal(),
           ),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 20),

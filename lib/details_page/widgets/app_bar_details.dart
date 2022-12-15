@@ -3,19 +3,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:shopping_cart/details_page/providers.dart';
 
-class AppBarDetails extends StatelessWidget implements PreferredSizeWidget {
+class AppBarDetails extends ConsumerWidget implements PreferredSizeWidget {
   const AppBarDetails({
     Key? key,
-    required this.ref,
   }) : super(key: key);
-
-  final WidgetRef ref;
 
   @override
   Size get preferredSize => const Size(double.maxFinite, 56);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return AppBar(
       elevation: 20,
       iconTheme: const IconThemeData(color: Colors.blue),

@@ -4,16 +4,13 @@ import 'package:shopping_cart/cart_page/providers.dart';
 
 import '../../details_page/details_page.dart';
 
-class RowTotal extends StatelessWidget {
+class RowTotal extends ConsumerWidget {
   const RowTotal({
     Key? key,
-    required this.ref,
   }) : super(key: key);
 
-  final WidgetRef ref;
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
