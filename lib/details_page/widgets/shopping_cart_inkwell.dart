@@ -52,10 +52,9 @@ class _ShoppingCartInkWellState extends ConsumerState<ShoppingCartInkWell> {
 List<ProductViewData> _addQuantityToProduct(
     ProductViewData product, List<ProductViewData> productsInCart) {
   if (!productsInCart.contains(product)) {
-    product.quantity = 1;
     productsInCart.add(product);
-  } else {
-    product.quantity++;
   }
+  product.quantity++;
+
   return productsInCart;
 }

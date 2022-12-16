@@ -23,6 +23,6 @@ class ProductViewData {
     required this.category,
     required this.thumbnail,
     required this.images,
-    required this.quantity,
+    this.quantity = 0,
   });
 }
