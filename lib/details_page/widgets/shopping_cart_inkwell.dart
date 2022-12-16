@@ -55,6 +55,5 @@ List<ProductViewData> _addQuantityToProduct(
     productsInCart.add(product);
   }
   product.quantity++;
-
   return productsInCart;
 }

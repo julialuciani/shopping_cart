@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopping_cart/api_request/models/product_viewdata.dart';
 import 'package:shopping_cart/cart_page/cart_controller.dart';
 import 'package:shopping_cart/cart_page/providers.dart';
+import 'package:shopping_cart/details_page/providers.dart';
 
 class AddOrRemoveContainer extends ConsumerStatefulWidget {
   final ProductViewData product;
@@ -36,6 +37,7 @@ class _AddOrRemoveContainerState extends ConsumerState<AddOrRemoveContainer> {
           InkWell(
               onTap: () {
                 CartController.addQuantity(widget.product);
+                ref.read(numberOfProducts.notifier).state++;
                 ref.read(totalProvider.notifier).state =
                     CartController.calculateTotal(widget.products);
                 setState(() {});
@@ -48,6 +50,7 @@ class _AddOrRemoveContainerState extends ConsumerState<AddOrRemoveContainer> {
           InkWell(
               onTap: () {
                 CartController.subtractQuantity(widget.product);
+                ref.read(numberOfProducts.notifier).state--;
                 ref.read(totalProvider.notifier).state =
                     CartController.calculateTotal(widget.products);
                 setState(() {});
