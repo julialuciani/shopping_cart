@@ -19,15 +19,17 @@ class HomePage extends ConsumerWidget {
       body: SafeArea(
         child: getProductsProvider.when(
           data: (data) {
-            return Column(
-              children: [
-                const RowTextFormFieldAndIcons(),
-                SliderPhotos(
-                  images: images,
-                ),
-                ListViewIcons(data: data),
-                ListViewProducts(data: data)
-              ],
+            return SingleChildScrollView(
+              child: Column(
+                children: [
+                  const RowTextFormFieldAndIcons(),
+                  SliderPhotos(
+                    images: images,
+                  ),
+                  ListViewIcons(data: data),
+                  ListViewProducts(data: data)
+                ],
+              ),
             );
           },
           error: (error, stackTrace) {

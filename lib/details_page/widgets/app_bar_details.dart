@@ -4,9 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopping_cart/details_page/providers.dart';
 
 class AppBarDetails extends ConsumerWidget implements PreferredSizeWidget {
-  const AppBarDetails({
-    Key? key,
-  }) : super(key: key);
+  const AppBarDetails({super.key});
 
   @override
   Size get preferredSize => const Size(double.maxFinite, 56);

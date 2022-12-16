@@ -30,7 +30,13 @@ void main() {
       expect(find.byType(Spacer), findsWidgets);
       expect(find.byType(ShoppingCartInkWell), findsWidgets);
 
-      await tester.tap(find.byType(ShoppingCartInkWell));
+      await tester.tap(find.byType(Chip));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byType(Chip));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byIcon(Icons.shopping_cart).last);
       await tester.pumpAndSettle();
     });
   });

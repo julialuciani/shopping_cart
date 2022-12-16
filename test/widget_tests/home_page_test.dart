@@ -25,6 +25,7 @@ void main() {
         expect(find.byType(SliderPhotos), findsWidgets);
         expect(find.byType(ListViewIcons), findsWidgets);
         expect(find.byType(ListViewProducts), findsWidgets);
+        expect(find.byType(SingleChildScrollView), findsOneWidget);
       },
     );
   });

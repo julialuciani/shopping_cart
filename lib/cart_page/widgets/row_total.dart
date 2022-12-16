@@ -5,9 +5,7 @@ import 'package:shopping_cart/cart_page/providers.dart';
 import '../../details_page/details_page.dart';
 
 class RowTotal extends ConsumerWidget {
-  const RowTotal({
-    Key? key,
-  }) : super(key: key);
+  const RowTotal({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
