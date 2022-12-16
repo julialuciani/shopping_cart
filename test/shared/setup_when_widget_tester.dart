@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shopping_cart/api_request/usecase/products_usecase_provider.dart';
 
 import 'fake_repository.dart';

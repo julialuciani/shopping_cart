@@ -30,7 +30,13 @@ void main() {
       expect(find.byType(Spacer), findsWidgets);
       expect(find.byType(ShoppingCartInkWell), findsWidgets);
 
-      await tester.tap(find.byType(ShoppingCartInkWell));
+      await tester.tap(find.byType(Chip));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byType(Chip));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byIcon(Icons.shopping_cart).last);
       await tester.pumpAndSettle();
     });
   });
@@ -47,5 +53,6 @@ ProductViewData product = ProductViewData(
   brand: 'brand',
   category: 'category',
   thumbnail: 'thumbnail',
+  quantity: 0,
   images: ["https://i.dummyjson.com/data/products/1/1.jpg"],
 );

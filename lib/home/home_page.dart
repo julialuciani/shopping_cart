@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopping_cart/api_request/models/product_viewdata.dart';
 import 'package:shopping_cart/api_request/usecase/products_usecase_provider.dart';
 import 'package:shopping_cart/home/widgets/list_view_icons.dart';
@@ -19,15 +19,17 @@ class HomePage extends ConsumerWidget {
       body: SafeArea(
         child: getProductsProvider.when(
           data: (data) {
-            return Column(
-              children: [
-                const RowTextFormFieldAndIcons(),
-                SliderPhotos(
-                  images: images,
-                ),
-                ListViewIcons(data: data),
-                ListViewProducts(data: data)
-              ],
+            return SingleChildScrollView(
+              child: Column(
+                children: [
+                  const RowTextFormFieldAndIcons(),
+                  SliderPhotos(
+                    images: images,
+                  ),
+                  ListViewIcons(data: data),
+                  ListViewProducts(data: data)
+                ],
+              ),
             );
           },
           error: (error, stackTrace) {

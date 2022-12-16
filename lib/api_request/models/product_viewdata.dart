@@ -10,6 +10,7 @@ class ProductViewData {
   String category;
   String thumbnail;
   List<String> images;
+  int quantity;
   ProductViewData({
     required this.id,
     required this.title,
@@ -22,5 +23,6 @@ class ProductViewData {
     required this.category,
     required this.thumbnail,
     required this.images,
+    this.quantity = 0,
   });
 }

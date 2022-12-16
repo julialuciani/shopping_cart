@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import 'package:shopping_cart/api_request/models/product_viewdata.dart';
@@ -8,7 +8,7 @@ import 'package:shopping_cart/details_page/widgets/carousel_slider_details.dart'
 import 'package:shopping_cart/details_page/widgets/rating_stars.dart';
 import 'package:shopping_cart/details_page/widgets/shopping_cart_inkwell.dart';
 
-class DetailsPage extends StatefulHookConsumerWidget {
+class DetailsPage extends ConsumerStatefulWidget {
   final ProductViewData product;
   static const route = "details-page";
   const DetailsPage({
@@ -84,7 +84,9 @@ class _DetailsPageState extends ConsumerState<DetailsPage> {
                       ),
                     ),
                   ),
-                  const ShoppingCartInkWell()
+                  ShoppingCartInkWell(
+                    product: widget.product,
+                  )
                 ],
               ),
             ),

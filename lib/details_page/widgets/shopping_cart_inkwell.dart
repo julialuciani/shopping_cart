@@ -1,16 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shopping_cart/api_request/models/product_viewdata.dart';
 import 'package:shopping_cart/details_page/providers.dart';
 
-class ShoppingCartInkWell extends ConsumerWidget {
-  const ShoppingCartInkWell({super.key});
+class ShoppingCartInkWell extends ConsumerStatefulWidget {
+  final ProductViewData product;
+  const ShoppingCartInkWell({
+    required this.product,
+    super.key,
+  });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ShoppingCartInkWell> createState() =>
+      _ShoppingCartInkWellState();
+}
+
+class _ShoppingCartInkWellState extends ConsumerState<ShoppingCartInkWell> {
+  @override
+  Widget build(BuildContext context) {
+    final cartProducts = ref.read(cartProvider);
     return InkWell(
       splashFactory: NoSplash.splashFactory,
       onTap: () {
-        ref.read(cartProvider.notifier).state++;
+        ref.read(cartProvider.notifier).state =
+            _addQuantityToProduct(widget.product, cartProducts);
+
+        ref.read(numberOfProducts.notifier).state++;
       },
       child: Chip(
         side: const BorderSide(width: 2, color: Colors.blue),
@@ -32,4 +47,13 @@ class ShoppingCartInkWell extends ConsumerWidget {
       ),
     );
   }
+}
+
+List<ProductViewData> _addQuantityToProduct(
+    ProductViewData product, List<ProductViewData> productsInCart) {
+  if (!productsInCart.contains(product)) {
+    productsInCart.add(product);
+  }
+  product.quantity++;
+  return productsInCart;
 }

@@ -1,4 +1,4 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopping_cart/api_request/models/product_viewdata.dart';
 import 'package:shopping_cart/api_request/repository/product/product_repository_provider.dart';
 import 'package:shopping_cart/api_request/usecase/get_all_products_usecase.dart';
