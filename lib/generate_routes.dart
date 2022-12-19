@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_cart/cagory_page/category_page.dart';
 import 'package:shopping_cart/cart_page/cart_page.dart';
 import 'package:shopping_cart/details_page/details_page.dart';
 import 'package:shopping_cart/home/home_page.dart';
@@ -26,6 +27,12 @@ class GenerateRoute {
       return PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) {
           return const CartPage();
+        },
+      );
+    } else if (settings.name == CategoryPage.route) {
+      return PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) {
+          return const CategoryPage();
         },
       );
     }

@@ -12,68 +12,64 @@ class ListViewProducts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 270,
-      child: ListView.builder(
-        itemCount: data.length,
-        itemBuilder: (context, index) {
-          List<String> images = data[index].images;
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-                child: Text(
-                  data[index].title,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
+    return ListView.builder(
+      itemCount: data.length,
+      itemBuilder: (context, index) {
+        List<String> images = data[index].images;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+              child: Text(
+                data[index].title,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(
-                height: 200,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: data[index].images.length,
-                  itemBuilder: (context, index) {
-                    return SizedBox(
-                      height: 200,
-                      child: Image.network(images[index]),
-                    );
-                  },
-                ),
+            ),
+            SizedBox(
+              height: 200,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: data[index].images.length,
+                itemBuilder: (context, index) {
+                  return SizedBox(
+                    height: 200,
+                    child: Image.network(images[index]),
+                  );
+                },
               ),
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, "details-page",
-                            arguments: data[index]);
-                      },
-                      child: const Chip(
-                        side: BorderSide(width: 2, color: Colors.blue),
-                        padding: EdgeInsets.all(10),
-                        backgroundColor: Colors.white,
-                        label: Text(
-                          "Detalhes",
-                          style: TextStyle(
-                            color: Colors.blue,
-                          ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, "details-page",
+                          arguments: data[index]);
+                    },
+                    child: const Chip(
+                      side: BorderSide(width: 2, color: Colors.blue),
+                      padding: EdgeInsets.all(10),
+                      backgroundColor: Colors.white,
+                      label: Text(
+                        "Detalhes",
+                        style: TextStyle(
+                          color: Colors.blue,
                         ),
                       ),
-                    )
-                  ],
-                ),
-              )
-            ],
-          );
-        },
-      ),
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        );
+      },
     );
   }
 }
