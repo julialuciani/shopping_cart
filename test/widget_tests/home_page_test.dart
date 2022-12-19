@@ -19,7 +19,6 @@ void main() {
         await loadPageWhen(tester, const HomePage());
 
         expect(find.byType(Scaffold), findsWidgets);
-        expect(find.byType(SafeArea), findsWidgets);
         expect(find.byType(Column), findsWidgets);
         expect(find.byType(RowTextFormFieldAndIcons), findsWidgets);
         expect(find.byType(SliderPhotos), findsWidgets);

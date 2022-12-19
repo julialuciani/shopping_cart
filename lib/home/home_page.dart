@@ -16,29 +16,27 @@ class HomePage extends ConsumerWidget {
     final getProductsProvider = ref.watch(productsProvider);
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: SafeArea(
-        child: getProductsProvider.when(
-          data: (data) {
-            return SingleChildScrollView(
-              child: Column(
-                children: [
-                  const RowTextFormFieldAndIcons(),
-                  SliderPhotos(
-                    images: images,
-                  ),
-                  ListViewIcons(data: data),
-                  ListViewProducts(data: data)
-                ],
-              ),
-            );
-          },
-          error: (error, stackTrace) {
-            return const Text('Errooooooooooooooo');
-          },
-          loading: () {
-            return const CircularProgressIndicator();
-          },
-        ),
+      body: getProductsProvider.when(
+        data: (data) {
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                const RowTextFormFieldAndIcons(),
+                SliderPhotos(
+                  images: images,
+                ),
+                ListViewIcons(data: data),
+                SizedBox(height: 400, child: ListViewProducts(data: data))
+              ],
+            ),
+          );
+        },
+        error: (error, stackTrace) {
+          return const Text('Errooooooooooooooo');
+        },
+        loading: () {
+          return const CircularProgressIndicator();
+        },
       ),
     );
   }
