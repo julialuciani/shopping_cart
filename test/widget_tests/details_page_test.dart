@@ -36,6 +36,9 @@ void main() {
       await tester.tap(find.byType(Chip));
       await tester.pumpAndSettle();
 
+      await tester.tap(find.byType(ShoppingCartInkWell));
+      await tester.pumpAndSettle();
+
       await tester.tap(find.byIcon(Icons.shopping_cart).last);
       await tester.pumpAndSettle();
     });

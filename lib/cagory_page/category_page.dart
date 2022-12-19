@@ -5,10 +5,7 @@ import 'package:shopping_cart/home/widgets/list_view_products.dart';
 
 class CategoryPage extends ConsumerWidget {
   static const route = "/category-page";
-  const CategoryPage({
-    Key? key,
-  }) : super(key: key);
-
+  const CategoryPage({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final products = ref.watch(categoryProvider);

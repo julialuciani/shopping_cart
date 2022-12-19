@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shopping_cart/api_request/usecase/products_usecase_provider.dart';
+import 'package:shopping_cart/cagory_page/providers.dart';
 
 import 'fake_repository.dart';
 
@@ -15,6 +16,7 @@ class SetupWhenWidgetTester extends StatelessWidget {
     return ProviderScope(
       overrides: [
         productsProvider.overrideWith((ref) => [first, second]),
+        categoryProvider.overrideWith((ref) => [first, second])
       ],
       child: MaterialApp(
         home: Material(
