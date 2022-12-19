@@ -8,13 +8,13 @@ class CategoryPage extends ConsumerWidget {
   const CategoryPage({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final products = ref.watch(categoryProvider);
+    final productsByCategory = ref.watch(categoryProvider);
     return Scaffold(
       appBar: AppBar(
         elevation: 20,
         backgroundColor: Colors.white,
         title: Text(
-          products[0].category,
+          productsByCategory[0].category,
           style: const TextStyle(color: Colors.blue),
         ),
         iconTheme: const IconThemeData(color: Colors.blue),
@@ -23,7 +23,7 @@ class CategoryPage extends ConsumerWidget {
         children: [
           Expanded(
             child: ListViewProducts(
-              data: products,
+              data: productsByCategory,
             ),
           )
         ],
