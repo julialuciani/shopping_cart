@@ -8,7 +8,9 @@ class ToBuyInkWell extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(25),
       splashFactory: NoSplash.splashFactory,
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(context, "/confirmation-page");
+      },
       child: const Chip(
         labelPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
         backgroundColor: Colors.white,

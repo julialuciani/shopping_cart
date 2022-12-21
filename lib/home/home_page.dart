@@ -18,16 +18,18 @@ class HomePage extends ConsumerWidget {
       resizeToAvoidBottomInset: false,
       body: getProductsProvider.when(
         data: (data) {
-          return SingleChildScrollView(
-            child: Column(
-              children: [
-                const RowTextFormFieldAndIcons(),
-                SliderPhotos(
-                  images: images,
-                ),
-                ListViewIcons(data: data),
-                SizedBox(height: 400, child: ListViewProducts(data: data))
-              ],
+          return SafeArea(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const RowTextFormFieldAndIcons(),
+                  SliderPhotos(
+                    images: images,
+                  ),
+                  ListViewIcons(data: data),
+                  SizedBox(height: 400, child: ListViewProducts(data: data))
+                ],
+              ),
             ),
           );
         },
