@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopping_cart/api_request/models/product_viewdata.dart';
 import 'package:shopping_cart/api_request/usecase/products_usecase_provider.dart';
+import 'package:shopping_cart/home/provider.dart';
 import 'package:shopping_cart/home/widgets/list_view_icons.dart';
 import 'package:shopping_cart/home/widgets/list_view_products.dart';
 import 'package:shopping_cart/home/widgets/row_text_form_field_and_icons.dart';
@@ -14,6 +15,7 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final getProductsProvider = ref.watch(productsProvider);
+    final getFilteredList = ref.watch(getFilteredProducts);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: getProductsProvider.when(
@@ -22,12 +24,14 @@ class HomePage extends ConsumerWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const RowTextFormFieldAndIcons(),
+                  RowTextFormFieldAndIcons(products: data),
                   SliderPhotos(
                     images: images,
                   ),
                   ListViewIcons(data: data),
-                  SizedBox(height: 400, child: ListViewProducts(data: data))
+                  SizedBox(
+                      height: 400,
+                      child: ListViewProducts(data: getFilteredList))
                 ],
               ),
             ),
