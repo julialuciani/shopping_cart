@@ -5,6 +5,7 @@ import 'package:shopping_cart/confirmation_page/confirmation_page.dart';
 import 'package:shopping_cart/details_page/details_page.dart';
 import 'package:shopping_cart/home/home_page.dart';
 import 'package:shopping_cart/payment-page/payment_page.dart';
+import 'package:shopping_cart/sucesspage/sucess_page.dart';
 
 import 'api_request/models/product_viewdata.dart';
 
@@ -46,8 +47,14 @@ class GenerateRoute {
     } else if (settings.name == PaymentPage.route) {
       return PageRouteBuilder(
           pageBuilder: (context, animation, secondaryAnimation) {
-        return const PaymentPage();
+        return PaymentPage();
       });
+    } else if (settings.name == SucessPage.route) {
+      return PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) {
+          return const SucessPage();
+        },
+      );
     }
     return null;
   }
