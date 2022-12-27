@@ -27,151 +27,150 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
         iconTheme: const IconThemeData(color: Colors.blue),
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          child: Form(
-            key: _formKey,
-            autovalidateMode: AutovalidateMode.always,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                TextFormField(
-                  decoration: const InputDecoration(
-                    label: Text("Nome"),
-                  ),
-                  validator: (value) {
-                    if (value == "") {
-                      isFormValid = false;
-                      return "Campo não pode ficar vazio!";
-                    }
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        child: Form(
+          key: _formKey,
+          autovalidateMode: AutovalidateMode.always,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              TextFormField(
+                decoration: const InputDecoration(
+                  label: Text("Nome"),
+                ),
+                validator: (value) {
+                  if (value == "") {
+                    isFormValid = false;
+                    return "Campo não pode ficar vazio!";
+                  }
+                  isFormValid = true;
+                  return null;
+                },
+                onChanged: (value) {
+                  if (_formKey.currentState!.validate()) {
                     isFormValid = true;
-                    return null;
-                  },
-                  onChanged: (value) {
-                    if (_formKey.currentState!.validate()) {
-                      isFormValid = true;
-                    } else {
-                      isFormValid = false;
-                    }
-                    setState(() {});
-                  },
+                  } else {
+                    isFormValid = false;
+                  }
+                  setState(() {});
+                },
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  label: Text("CPF"),
                 ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    label: Text("CPF"),
+                keyboardType: TextInputType.number,
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly,
+                  CpfInputFormatter(),
+                ],
+                validator: (value) {
+                  if (value == "") {
+                    return "Campo não pode ficar vazio!";
+                  }
+                  return null;
+                },
+                onChanged: (value) {
+                  if (_formKey.currentState!.validate()) {
+                    isFormValid = true;
+                  } else {
+                    isFormValid = false;
+                  }
+                  setState(() {});
+                },
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  label: Text("Data de Nascimento"),
+                ),
+                keyboardType: TextInputType.number,
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly,
+                  DataInputFormatter(),
+                ],
+                validator: (value) {
+                  if (value == "") {
+                    return "Campo não pode ficar vazio!";
+                  }
+                  return null;
+                },
+                onChanged: (value) {
+                  if (_formKey.currentState!.validate()) {
+                    isFormValid = true;
+                  } else {
+                    isFormValid = false;
+                  }
+                  setState(() {});
+                },
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  label: Text("CEP"),
+                ),
+                keyboardType: TextInputType.number,
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly,
+                  CepInputFormatter(),
+                ],
+                validator: (value) {
+                  if (value == "") {
+                    return "Campo não pode ficar vazio!";
+                  }
+                  return null;
+                },
+                onChanged: (value) {
+                  if (_formKey.currentState!.validate()) {
+                    isFormValid = true;
+                  } else {
+                    isFormValid = false;
+                  }
+                  setState(() {});
+                },
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  label: Text("Endereço"),
+                ),
+                validator: (value) {
+                  if (value == "") {
+                    return "Campo não pode ficar vazio!";
+                  }
+                  return null;
+                },
+                onChanged: (value) {
+                  if (_formKey.currentState!.validate()) {
+                    isFormValid = true;
+                  } else {
+                    isFormValid = false;
+                  }
+                  setState(() {});
+                },
+              ),
+              const SizedBox(height: 20),
+              InkWell(
+                borderRadius: BorderRadius.circular(25),
+                splashFactory: NoSplash.splashFactory,
+                onTap: () {
+                  if (_formKey.currentState!.validate()) {
+                    Navigator.of(context).pushNamed("/payment");
+                  }
+                },
+                child: Chip(
+                  labelPadding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                  backgroundColor: Colors.white,
+                  side: BorderSide(
+                    color: isFormValid ? Colors.blue : Colors.grey,
+                    width: 1,
                   ),
-                  keyboardType: TextInputType.number,
-                  inputFormatters: [
-                    FilteringTextInputFormatter.digitsOnly,
-                    CpfInputFormatter(),
-                  ],
-                  validator: (value) {
-                    if (value == "") {
-                      return "Campo não pode ficar vazio!";
-                    }
-                    return null;
-                  },
-                  onChanged: (value) {
-                    if (_formKey.currentState!.validate()) {
-                      isFormValid = true;
-                    } else {
-                      isFormValid = false;
-                    }
-                    setState(() {});
-                  },
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    label: Text("Data de Nascimento"),
-                  ),
-                  keyboardType: TextInputType.number,
-                  inputFormatters: [
-                    FilteringTextInputFormatter.digitsOnly,
-                    DataInputFormatter(),
-                  ],
-                  validator: (value) {
-                    if (value == "") {
-                      return "Campo não pode ficar vazio!";
-                    }
-                    return null;
-                  },
-                  onChanged: (value) {
-                    if (_formKey.currentState!.validate()) {
-                      isFormValid = true;
-                    } else {
-                      isFormValid = false;
-                    }
-                    setState(() {});
-                  },
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    label: Text("CEP"),
-                  ),
-                  keyboardType: TextInputType.number,
-                  inputFormatters: [
-                    FilteringTextInputFormatter.digitsOnly,
-                    CepInputFormatter(),
-                  ],
-                  validator: (value) {
-                    if (value == "") {
-                      return "Campo não pode ficar vazio!";
-                    }
-                    return null;
-                  },
-                  onChanged: (value) {
-                    if (_formKey.currentState!.validate()) {
-                      isFormValid = true;
-                    } else {
-                      isFormValid = false;
-                    }
-                    setState(() {});
-                  },
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    label: Text("Endereço"),
-                  ),
-                  validator: (value) {
-                    if (value == "") {
-                      return "Campo não pode ficar vazio!";
-                    }
-                    return null;
-                  },
-                  onChanged: (value) {
-                    if (_formKey.currentState!.validate()) {
-                      isFormValid = true;
-                    } else {
-                      isFormValid = false;
-                    }
-                    setState(() {});
-                  },
-                ),
-                const SizedBox(height: 20),
-                InkWell(
-                  borderRadius: BorderRadius.circular(25),
-                  splashFactory: NoSplash.splashFactory,
-                  onTap: () {
-                    if (_formKey.currentState!.validate()) {
-                      Navigator.of(context).pushNamed("/payment");
-                    }
-                  },
-                  child: Chip(
-                    labelPadding:
-                        const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                    backgroundColor: Colors.white,
-                    side: BorderSide(
-                        color: isFormValid ? Colors.blue : Colors.grey,
-                        width: 1),
-                    label: Text(
-                      "Finalizar Compra",
-                      style: TextStyle(
-                          color: isFormValid ? Colors.blue : Colors.grey),
-                    ),
+                  label: Text(
+                    "Finalizar Compra",
+                    style: TextStyle(
+                        color: isFormValid ? Colors.blue : Colors.grey),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
