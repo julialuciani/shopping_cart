@@ -26,9 +26,14 @@ class AppBarDetails extends ConsumerWidget implements PreferredSizeWidget {
             children: [
               IconButton(
                   onPressed: () {
-                    Navigator.of(context).pushNamed("cart-page");
+                    enableCartButton(ref.watch(numberOfProducts))
+                        ? Navigator.of(context).pushNamed("cart-page")
+                        : null;
                   },
-                  icon: const Icon(Icons.shopping_cart, color: Colors.blue)),
+                  icon: Icon(Icons.shopping_cart,
+                      color: enableCartButton(ref.watch(numberOfProducts))
+                          ? Colors.blue
+                          : Colors.grey)),
               Positioned(
                 right: 1,
                 child: CircleAvatar(
@@ -49,4 +54,8 @@ class AppBarDetails extends ConsumerWidget implements PreferredSizeWidget {
       ),
     );
   }
+}
+
+bool enableCartButton(int numberOfProducts) {
+  return numberOfProducts != 0;
 }
