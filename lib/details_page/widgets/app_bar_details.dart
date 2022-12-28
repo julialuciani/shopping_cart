@@ -57,8 +57,5 @@ class AppBarDetails extends ConsumerWidget implements PreferredSizeWidget {
 }
 
 bool enableCartButton(int numberOfProducts) {
-  if (numberOfProducts != 0) {
-    return true;
-  }
-  return false;
+  return numberOfProducts != 0;
 }

@@ -40,10 +40,9 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                 ),
                 validator: (value) {
                   if (value == "") {
-                    isFormValid = false;
                     return "Campo não pode ficar vazio!";
                   }
-                  isFormValid = true;
+
                   return null;
                 },
                 onChanged: (value) {
