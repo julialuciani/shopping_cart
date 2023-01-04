@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primaryColor: Colors.indigo),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: GenerateRoute.findRoute,
-      initialRoute: "/",
+      initialRoute: "/login-page",
     );
   }
 }

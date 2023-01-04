@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:shopping_cart/payment-page/widgets/column_with_divider_and_list_tile.dart';
+import 'package:shopping_cart/payment_page/widgets/column_with_divider_and_list_tile.dart';
 
 class PaymentPage extends StatefulWidget {
   static const route = "/payment";
