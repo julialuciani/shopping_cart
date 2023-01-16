@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class RatingStars extends StatelessWidget {
   final double rating;
@@ -9,71 +10,23 @@ class RatingStars extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Column(
-          children: [
-            SizedBox(
-              width: 120,
-              height: 40,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 5,
-                itemBuilder: (context, index) {
-                  return Icon(
-                    Icons.star,
-                    color: Colors.grey.shade100,
-                  );
-                },
-              ),
-            ),
-            Text(
-              '${rating.toString()}/5.00',
-              style: const TextStyle(color: Colors.amber),
-            ),
-          ],
+    return RatingBar(
+      minRating: 1,
+      maxRating: 5,
+      initialRating: rating,
+      allowHalfRating: true,
+      ratingWidget: RatingWidget(
+        full: const Icon(
+          Icons.star,
+          color: Colors.amber,
         ),
-        Positioned(
-          child: SizedBox(
-            width: 120,
-            height: 50,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: rating.toInt(),
-              itemBuilder: (context, index) {
-                return const Icon(
-                  Icons.star,
-                  color: Colors.amber,
-                );
-              },
-            ),
-          ),
+        half: const Icon(
+          Icons.star_half,
+          color: Colors.amber,
         ),
-        Positioned(
-          child: SizedBox(
-            width: 120,
-            height: 50,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: isStarHalf(rating),
-              itemBuilder: (context, index) {
-                return const Icon(
-                  Icons.star_half_sharp,
-                  color: Colors.amber,
-                );
-              },
-            ),
-          ),
-        ),
-      ],
+        empty: const Icon(Icons.star),
+      ),
+      onRatingUpdate: (value) {},
     );
-  }
-}
-
-int isStarHalf(double rating) {
-  if (rating.toInt() - rating != 0) {
-    return rating.toInt() + 1;
-  } else {
-    return 0;
   }
 }
